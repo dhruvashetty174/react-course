@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat Bot</title>
+    <!-- Include React and ReactDOM -->
+    <script src="https://unpkg.com/supersimpledev/react.js" crossorigin></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js" crossorigin></script>
+    <script src="https://unpkg.com/supersimpledev/chatbot"></script>
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script type="text/babel">
+
+        function Output({text}){
+            return(
+                <p>Hello {text}</p>
+            )
+        }
+      
+
+      function GetInput(){
+        const [text,setText]=React.useState('Hello');
+
+        function ResetInput(){
+            setText('');
+        }
+
+         return(
+            <>
+            <input 
+            type='text'
+            value={text}
+            onChange={(e)=>{setText(e.target.value)}}
+            />
+                     <Output text={text}/>
+                                 <button onClick={ResetInput}></button>
+
+
+            </>
+         )   
+         
+        }
+
+      function App(){
+
+        const [counter,setCounter] = React.useState(0);
+                const [counters,setCounters] = React.useState(0);
+
+                 function increaserCounters(){
+            return(
+                setCounters(counters-1));
+        }
+
+        function reset(){
+            setCounter(0);
+            setCounters(0);
+        }
+
+
+        function increaserCounter(){
+            return(
+                setCounter(counter+1));
+        }
+
+        
+
+
+        // console.log(id);
+        // const [chatMessages,setChatMessages] = array; //Array destructuring 
+        /* const chatMessages = array[0];
+        const setChatMessages = array[1];*/
+
+        // const chatMessageComponent= 
+
+        return(
+          <>
+                    <button onClick={increaserCounter}>Click here {counter}</button>
+                                        <button onClick={increaserCounters}>Click here {counters}</button>
+                                        <button onClick={reset}>Reset</button>
+                                        <GetInput />
+
+
+          </>
+        );
+      }
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App/>);
+    </script> 
+  </body>
+</html>
